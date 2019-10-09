@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+body {
+    margin: 0;
+    background-color: #151920;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: rgb(64, 169, 243);
+    /* #232c3b*/
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+
+.card {
+    background-color: rgb(36, 40, 42);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 3px;
+    border-radius: 2px;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+canvas {
+    position: absolute;
+}
+
+textarea {
+    background: transparent;
+    color: #53a9d7;
+    border: 1px solid #7612A4;
+    border-radius: 4px;
+    box-shadow: none;
+    display: inline-block;
+    max-width: 100%;
+    padding: 0.75rem;
+    -webkit-appearance: none;
+    width: 100vW;
+    font-size: 18px;
+
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+}
+
+textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.row-compute {
+    align-self: start;
+}
+
+button {
+    color: white;
+    font-size: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background-color: rgb(64, 169, 243);
+    border-radius: 4px;
+    padding: 0.2rem 0.8rem;
+    transition: all 0.3s ease 0s;
+    font-family: inherit;
+}
+
+button:hover {
+    background-color: rgb(0, 149, 255);
+    border-color: rgb(0, 149, 255);
+}
