@@ -29,11 +29,20 @@ var LinearLearner = {
 			 */
 			, epochs
 
+			, xTrainData
+
+			, yTrainData
+
+			/**
+			 * 2d array of points [[x1,y1], [x2,y2]]
+			 */
+			, coordinates = []
+
 			, canvas
 
 			, ctx
 
-			, textarea
+			, xInputElement
 
 			/**
 			 * Returns the matching element by id
@@ -229,7 +238,7 @@ var LinearLearner = {
 				getElementById('btnCompute').addEventListener('click', compute);
 
 				getElementById('btnGenerate').addEventListener('click', () => {
-					textarea.value = JSON.stringify(generateRandom2DArray());
+					xInputElement.value = JSON.stringify(generateRandom2DArray());
 				});
 			}
 
@@ -272,7 +281,7 @@ var LinearLearner = {
 			}
 
 			, compute = function () {
-				let xInput = textarea.value;
+				let xInput = parseInt(xInputElement.value);
 
 				if (!xInput) {
 					return;
@@ -283,14 +292,18 @@ var LinearLearner = {
 
 				clearCanvas(ctx, mapSize, mapSize);
 
-				let predictedY = learnLinear(xInput).then(predictedYData => console.log(predictedYData[0]));;
+				learnLinear(xInput).then(predictedYData => {
+					let predictedY = predictedYData[0];
 
-				drawCoordinates(ctx, xInput);
-				drawPath(ctx, xInput);
+					coordinates.push([xInput, predictedY]);
 
-				end = performance.now();
-
-				displayStats(xInput, predictedY, (end - ini));
+					drawCoordinates(ctx, coordinates);
+					drawPath(ctx, coordinates);
+	
+					end = performance.now();
+	
+					displayStats(coordinates, predictedY, (end - ini));
+				});
 			}
 
 			/**
@@ -305,11 +318,18 @@ var LinearLearner = {
 
 				epochs = 250;
 
+				xTrainData = [-1, 0, 1, 2, 3, 4];
+				yTrainData = [-3, -1, 1, 3, 5, 7];
+
+				for (let i = 0; i < xTrainData.length; i++) {
+					coordinates.push([xTrainData[i], yTrainData[i]]);
+				}
+
 				canvas = getAndInitializeCanvas('foreground', mapSize, mapSize);
 				ctx = getCanvas2DContext(canvas);
 				createGradient(ctx, mapSize);
 
-				textarea = getElementById('coordinates');
+				xInputElement = getElementById('coordinates');
 			}
 
 			/**

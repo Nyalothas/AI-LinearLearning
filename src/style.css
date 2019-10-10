@@ -43,7 +43,7 @@ canvas {
     position: absolute;
 }
 
-textarea {
+input {
     background: transparent;
     color: #53a9d7;
     border: 1px solid #7612A4;
@@ -62,7 +62,7 @@ textarea {
     -o-transition: all 0.30s ease-in-out;
 }
 
-textarea:focus {
+input:focus {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
 }
